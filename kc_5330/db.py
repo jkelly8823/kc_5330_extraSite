@@ -43,6 +43,20 @@ def populate_db(db):
 
     db.commit()
 
+def list_db():
+    db = get_db()
+    tables = db.execute("SELECT name FROM sqlite_master WHERE type='table';").fetchall()
+    nms = ['NAMES ARE:']
+    for table in tables:
+        nms.append(table['name'])
+    click.echo(nms)
+    return nms
+
+@click.command('list-db')
+def list_db_command():
+    list_db()
+    click.echo('Listed database')
+
 def init_db():
     db = get_db()
 
@@ -66,3 +80,4 @@ sqlite3.register_converter(
 def init_app(app):
     app.teardown_appcontext(close_db)
     app.cli.add_command(init_db_command)
+    app.cli.add_command(list_db_command)
