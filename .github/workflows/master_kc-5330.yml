@@ -30,7 +30,7 @@ jobs:
           source venv/bin/activate
       
       - name: Install dependencies
-        run: pip install dist/kc_5330-1.0.0-py2.py3-none-any.whl
+        run: pip install -r requirements.txt
 
       - name: Initialize db
         run: flask --app kc_5330 init-db
