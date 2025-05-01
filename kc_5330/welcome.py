@@ -15,5 +15,4 @@ def list_db():
 
 @bp.route('/')
 def index():
-    list_db()
-    return render_template('welcome/index.html')
+    return render_template('welcome/index.html', lst=list_db())
