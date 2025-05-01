@@ -43,7 +43,7 @@ coverage.xml
 
 # Build files
 build/
-dist/
+# dist/
 *.egg-info/
 .eggs/
 
