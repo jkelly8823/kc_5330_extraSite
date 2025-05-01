@@ -9,7 +9,7 @@ from kc_5330.db import get_db
 def list_db():
     db = get_db()
     tables = db.execute("SELECT name FROM sqlite_master WHERE type='table';").fetchall()
-    nms = []
+    nms = ['NAMES ARE:']
     for table in tables:
         print(table['name'])  # if you're using Row factory
         nms.append(table['name'])
