@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Code Overview{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+<div>
+    <br>
+    Talk about the code implemented
+    <br><br>
+</div>
+{% include 'partials/scrollable_table.html' %}
+{% endblock %}

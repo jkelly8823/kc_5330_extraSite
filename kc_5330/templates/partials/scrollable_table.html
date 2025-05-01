@@ -1,0 +1,50 @@
+<div class="scrollable-table-container">
+    <table>
+        <thead>
+            <tr>
+                <th colspan="{{ cols|length + overview }}" style="text-align: center;">
+                    {{ tablenm }}
+                    <a href="{{ url_for('download.download', filenm=tablenm, subdir=subdir) }}" class="btn btn-primary">(Download Table)
+
+                    </a>
+                </th>
+            </tr>
+            <tr>
+                {% for col in cols %}
+                    <th>
+                        {{ col }}
+                    </th>
+                {% endfor %}
+                {% if overview %}
+                    <th>
+                        View Dataset
+                    </th>
+                {% endif %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in rows %}
+            <tr>
+                {% for col in cols %}
+                    <td>
+                        {{ row[col] }}
+                    </td>
+                {% endfor %}
+                {% if overview %}
+                    <td>
+                        {% if subdir=="data" %}
+                            <a href="{{ url_for('datasets.dataset_viewer', id=row['id']) }}" class="button">
+                                View {{ row[cols[1]] }}
+                            </a>
+                        {% elif subdir=="code" %}
+                            <a href="{{ url_for('code.code_viewer', filenm=row[1]) }}" class="button">
+                                View {{ row[cols[1]] }}
+                            </a>
+                        {% endif %}
+                    </td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>

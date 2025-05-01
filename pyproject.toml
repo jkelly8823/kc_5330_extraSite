@@ -1,0 +1,11 @@
+[project]
+name = "kc_5330"
+version = "1.0.0"
+description = "Kyra Courtney for BMI 5330 Final Project Extra Credit."
+dependencies = [
+    "flask",
+]
+
+[build-system]
+requires = ["flit_core<4"]
+build-backend = "flit_core.buildapi"

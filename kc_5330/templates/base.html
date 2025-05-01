@@ -1,0 +1,22 @@
+<!doctype html>
+<title>{% block title %}{% endblock %} - kc_5330</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<nav>
+  <h1>kc_5330</h1>
+  <ul>
+    <li><a href="{{ url_for('welcome.index') }}">Welcome</a>
+    <li><a href="{{ url_for('welcome.index') }}">Methods</a>
+    <li><a href="{{ url_for('datasets.index') }}">Datasets</a>
+    <li><a href="{{ url_for('code.index') }}">Code</a>
+    <li><a href="{{ url_for('welcome.index') }}">Results</a>
+  </ul>
+</nav>
+<section class="content">
+  <header>
+    {% block header %}{% endblock %}
+  </header>
+  {% for message in get_flashed_messages() %}
+    <div class="flash">{{ message }}</div>
+  {% endfor %}
+  {% block content %}{% endblock %}
+</section>

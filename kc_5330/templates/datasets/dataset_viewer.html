@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Dataset Viewer{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+<div>
+    <br>
+    Talk about the specific dataset
+    <br><br>
+</div>
+{% include 'partials/scrollable_table.html' %}
+{% endblock %}

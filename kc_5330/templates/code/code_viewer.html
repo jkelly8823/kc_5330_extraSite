@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Code Viewer{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+<div>
+    <h3>{{ filenm }}</h3>
+    <br>
+    Talk about the specific code
+    <br>
+    <a href="{{ url_for('download.download', filenm=filenm, subdir=subdir) }}" class="btn btn-primary">(Download Code)</a>
+    <br><br>
+</div>
+{% include 'partials/scrollable_code.html' %}
+{% endblock %}
