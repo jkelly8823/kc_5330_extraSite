@@ -3,6 +3,8 @@ from flask import (
 )
 from werkzeug.exceptions import abort
 
+import click
+
 bp = Blueprint('welcome', __name__)
 
 from kc_5330.db import get_db
@@ -11,8 +13,8 @@ def list_db():
     tables = db.execute("SELECT name FROM sqlite_master WHERE type='table';").fetchall()
     nms = ['NAMES ARE:']
     for table in tables:
-        print(table['name'])  # if you're using Row factory
         nms.append(table['name'])
+    click.echo(nms)
     return nms
 
 
