@@ -84,7 +84,4 @@ jobs:
         with:
           app-name: 'kc-5330'
           slot-name: 'Production'
-
-      - name: Launch App
-        run: gunicorn --bind=0.0.0.0 --timeout 600 kc_5330:create_app
           
