@@ -34,4 +34,5 @@ def dataset_viewer(id):
     )
     rows = curs.fetchall()
     cols = [desc[0] for desc in curs.description]
+
     return render_template('datasets/dataset_viewer.html', rows=rows, cols=cols, overview=False, tablenm=table_nm, subdir='data')

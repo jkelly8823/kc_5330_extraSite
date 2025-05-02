@@ -7,7 +7,18 @@
 {% block content %}
 <div>
     <br>
-    Talk about the specific dataset
+    {% if tablenm=="GWAS Catalog" %}
+      This dataset is the GWAS Catalog track from UCSC Genome Browser for hg38 within the ROI of CDKN2a/2b &#177; 50k base pairs.
+      From this dataset, the RSID, phenotype, and associated genes were isolated.
+      When missing, the genes were manually added where possible via cross referencing with the full Genome Browser hg38 set.
+      This data was then further isolated to those with phenotypes of Type II diabetes and associated comorbidities.
+      The final subset of data was later used for cross referencing in the creation of additional tables.
+      The columns of interest for the full GWAS dataset are displayed below, with the full dataset available for download.
+    {% elif tablenm=="ENCODE cCRE"%}
+      The ENCODE cCRE track in UCSC was used to visually determine which SNPs were associated with phenotypes of interest that interrupted regulatory elements, if any.
+      Done via manual visual comparison of the selected GWAS RSIDs to the cCRE track for overlap with regulatory elements.
+      The columns of interest for the full ENCODE cCRE dataset are displayed below, with the full dataset available for download.
+    {% endif %}
     <br><br>
 </div>
 {% include 'partials/scrollable_table.html' %}

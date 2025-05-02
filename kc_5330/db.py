@@ -33,6 +33,25 @@ def populate_db(db):
                 (row['tool'], row['ver'], row['src'], row['aim'])
             )
 
+    with current_app.open_resource('static/data/gwascatalog.csv', mode='r') as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            db.execute(
+                'INSERT INTO gwascatalog (chromosome, start_loc, stop_loc, rsid, phenotype, gene) VALUES (?, ?, ?, ?, ?, ?)',
+                (row[None][0], row[None][1], row[None][2], row[None][3], row[None][9], row[None][13])
+            )
+
+    with current_app.open_resource('static/data/encodeccre.csv', mode='r') as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            db.execute(
+                'INSERT INTO encodeccre (chromosome, start_loc, stop_loc, regulatory_element) VALUES (?, ?, ?, ?)',
+                (row[None][0], row[None][1], row[None][2], row[None][11])
+            )
+
+
+
+
     with current_app.open_resource('static/code/codeoverview.csv', mode='r') as f:
         reader = csv.DictReader(f)
         for row in reader:
@@ -40,6 +59,7 @@ def populate_db(db):
                 'INSERT INTO codeoverview (filenm, purpose) VALUES (?, ?)',
                 (row['filenm'], row['purpose'])
             )
+
 
     db.commit()
 

@@ -44,3 +44,27 @@ Acknowledgements and References
 - Links to cited papers and tools  
 - Dataset citations (BibTeX or compatible formats)  
 - Mention of any third-party code/libraries used  
+
+
+
+
+
+cdkn2a2b-trackshg38.tracks.csv
+  which vars in ROI (+= 50k base pairs) were related to phenotype Type II diabetes or associated comorbidities
+  Also used to make subtables for regulatory element variants
+
+
+
+
+
+
+GWAS Catalog rack from UCSC Genome Browser for hg38 within ROI of CDKN2a/2a
+Isolated RSID, Phenotype, Associated Gene (manually added where possible via cross referencing with Genome Browser hg38)
+  for Type II diabetes and associated comorbidities
+Later used to cross reference to create additional tables
+
+
+CCRE from ENCODE in UCSC was used to visually determine which SNPs associated with phenotypes of interest interrupted regulatory elements, if any
+Manually compared the selected GWAS RSIDs to CCRE
+
+add note that only displayed cols of interest
