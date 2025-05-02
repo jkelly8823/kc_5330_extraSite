@@ -7,9 +7,6 @@ import click
 
 bp = Blueprint('welcome', __name__)
 
-from kc_5330.db import list_db
-
-
 @bp.route('/')
 def index():
-    return render_template('welcome/index.html', lst=list_db())
+    return render_template('welcome/index.html')
