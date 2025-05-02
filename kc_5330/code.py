@@ -18,7 +18,7 @@ def index():
     cols = [desc[0] for desc in curs.description]
     return render_template('code/index.html', rows=rows, cols=cols, overview=True, tablenm='Code Overview', subdir='code')
 
-@bp.route('/datasets/viewer/<string:filenm>', methods=['GET'])
+@bp.route('/code/viewer/<string:filenm>', methods=['GET'])
 def code_viewer(filenm):
     src = os.path.join(current_app.root_path, 'static/code')
     with open(f'{src}/{filenm}', 'r') as f:

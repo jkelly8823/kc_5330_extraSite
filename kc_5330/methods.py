@@ -5,8 +5,8 @@ from werkzeug.exceptions import abort
 
 import click
 
-bp = Blueprint('results', __name__)
+bp = Blueprint('methods', __name__)
 
-@bp.route('/results')
+@bp.route('/methods')
 def index():
-    return render_template('results/index.html')
+    return render_template('methods/index.html')

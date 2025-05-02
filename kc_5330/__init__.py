@@ -28,17 +28,23 @@ def create_app(test_config=None):
     from . import db
     db.init_app(app)
     
+    from . import download
+    app.register_blueprint(download.bp)
+
     from . import welcome
     app.register_blueprint(welcome.bp)
     app.add_url_rule('/', endpoint='index')
 
-    from . import download
-    app.register_blueprint(download.bp)
+    from . import methods
+    app.register_blueprint(methods.bp)
 
     from . import datasets
     app.register_blueprint(datasets.bp)
 
     from . import code
     app.register_blueprint(code.bp)
+
+    from . import results
+    app.register_blueprint(results.bp)
     
     return app

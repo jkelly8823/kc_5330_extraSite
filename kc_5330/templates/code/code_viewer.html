@@ -12,6 +12,10 @@
       This is a Jupyter notebook exported to a Python script.
       It was utilized to plot the data resulting from executing the <em>table_annovar.pl</em> Perl command.
       This script creates a bar graph displaying the number of rows that matched each outcome category.
+    {% elif filenm=="annovar_table.sh"%}
+      The shell script file contains the command utilized to annotate the filtered vcf file. The script <code>table_annovar.pl</code>
+      is a part of the ANNOVAR main package. The parameters of the command dictate that gene-based annotation should be performed using the
+      refGeneWithVer dataset from ANNOVAR upon the input vcf file.
     {% elif filenm==""%}
     {% endif %}
     <br><br>

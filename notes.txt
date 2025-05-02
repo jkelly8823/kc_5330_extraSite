@@ -69,3 +69,7 @@ Manually compared the selected GWAS RSIDs to CCRE
 
 add note that only displayed cols of interest
 
+
+
+TO ASK:
+I put the shell commands in a file and just linked it from methods page. Did you also want it displayed there?

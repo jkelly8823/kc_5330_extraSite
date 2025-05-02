@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Methods{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+<div>
+  <br>
+  The Methods tab documents the core techniques and analytical strategies behind each project on this site.
+  <br>This includes:
+  <ul>
+    <li>
+      <b>Data Wrangling:</b>
+      How raw data was cleaned, reshaped, and validated.
+    </li>
+    <li>
+      <b>Visualization Strategies:</b>
+      Custom charting techniques, dashboards, and visual design principles used to communicate results effectively.
+    </li>
+
+  </ul>
+  Each method is presented with clear descriptions and, when applicable, links to the code used for
+  implementation.
+</div>
+<br><hr>
+<div>
+  <h3>Computational Methods (Data Wrangling)</h3>
+  Variant analysis data was obtained via the command line <code>wget</code> for intergrated whole genome 
+  sequencing data from the 1000 Genomes Project. The vcf file was filtered on the chromosome 
+  column to only chromosome 9, and further filtered to include only the lines within a 50kb 
+  window of CDKN2A/B. Similarly, Annovar was downloaded via <code>wget</code> and the structure left unmodified.
+  <br><br>
+  From the project folder level, the following commands were used to annotate the filtered file (cdkn2a_2b.vcf). 
+  To retrieve and annotate the file with the database of choice, refGeneWithVer the code shown in 
+  <a href="{{ url_for('code.code_viewer', filenm='annovar_table.sh') }}" class="button">
+    annovar_table.sh
+  </a>
+   was executed.
+</div>
+<br><hr>
+<div>
+  <h3>Visualization Strategies</h3>
+  This experiment used Python (pandas, matplotlib, pyplot) for statistical analysis and the visualization of variant distribution.
+  The script to create the plot can be found in <a href="{{ url_for('code.code_viewer', filenm='plotter.py') }}" class="button">
+    plotter.py
+  </a>
+  <br><br>
+  Regulatory tracks were manually integrated into the UCSC Genome Browser for visual overlap analysis.
+</div>
+{% endblock %}
