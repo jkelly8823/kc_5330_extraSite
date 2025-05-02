@@ -1,0 +1,1 @@
+gunicorn --bind=0.0.0.0 --timeout 600 kc_5330:create_app
