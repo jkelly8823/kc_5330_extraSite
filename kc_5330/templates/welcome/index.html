@@ -10,16 +10,16 @@
   Welcome to my T2D research website! This space is designed to share the data and methodologies 
   incorporated into my project in a transparent and accessible way. <br><br>
   The site is divided into four main sections:
-  <h4>Methods</h4>
+  <a href="{{ url_for('methods.index') }}" class="button"><h3>Methods</h3></a>
   This tab provides detailed explanations of the methodologies, tools, and frameworks used in my
   research. It includes data processing workflows and other technical approaches. Each method is
   described with accompanying pseudocode where helpful.
-  <h4>Datasets</h4>
+  <a href="{{ url_for('datasets.index') }}" class="button"><h3>Datasets</h3></a>
   In this section, you'll find descriptions of the datasets I've used, including their source, structure,
   version, aim, and link to view the actual data used in my project.
-  <h4>Code</h4>
+  <a href="{{ url_for('code.index') }}" class="button"><h3>Code</h3></a>
   Here, you'll find all the python scripts and notebooks used for analysis and visualization.
-  <h4>Results</h4>
+  <a href="{{ url_for('results.index') }}" class="button"><h3>Results</h3></a>
   This section showcases the key findings from my work.
 </div>
 {% endblock %}
