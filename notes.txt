@@ -68,3 +68,4 @@ CCRE from ENCODE in UCSC was used to visually determine which SNPs associated wi
 Manually compared the selected GWAS RSIDs to CCRE
 
 add note that only displayed cols of interest
+

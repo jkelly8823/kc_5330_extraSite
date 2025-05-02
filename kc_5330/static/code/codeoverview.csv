@@ -1,2 +1,2 @@
 filenm,purpose
-dummy.py,Test the code pages
+plotter.py,Plot the number of entries per category from an ANNOVAR table output

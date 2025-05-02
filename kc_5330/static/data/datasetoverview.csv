@@ -1,4 +1,4 @@
 tool,ver,src,aim
-UCSC Genome Browser,hg38,genome.ucsc.edu,Visualize genomic context
-GWAS Catalog,2024,gwascatalog.org,GWAS validated disease-associated variant identification
+UCSC Genome Browser,hg38,www.genome.ucsc.edu,Visualize genomic context
+GWAS Catalog,2024,www.ebi.ac.uk/gwas,GWAS validated disease-associated variant identification
 ENCODE cCRE,2021,screen.wenglab.org,Crosss-reference candidate cis-Regulatory Elements (cCREs) derived from ENCODE data

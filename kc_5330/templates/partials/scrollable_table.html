@@ -27,15 +27,25 @@
             <tr>
                 {% for col in cols %}
                     <td>
-                        {{ row[col] }}
+                        {% if col == "src" %}
+                            <a href={{"https://"+row[col]}} target="_blank" class="button">
+                                {{ row[col] }}
+                            </a>
+                        {% else %}
+                            {{ row[col] }}
+                        {% endif %}
                     </td>
                 {% endfor %}
                 {% if overview %}
                     <td>
                         {% if subdir=="data" %}
-                            <a href="{{ url_for('datasets.dataset_viewer', id=row['id']) }}" class="button">
-                                View {{ row[cols[1]] }}
-                            </a>
+                            {% if row[cols[1]] == "UCSC Genome Browser" %}
+                                View source for full hg38 dataset
+                            {% else %}
+                                <a href="{{ url_for('datasets.dataset_viewer', id=row['id']) }}" class="button">
+                                    View {{ row[cols[1]] }}
+                                </a>
+                            {% endif %}
                         {% elif subdir=="code" %}
                             <a href="{{ url_for('code.code_viewer', filenm=row[1]) }}" class="button">
                                 View {{ row[cols[1]] }}

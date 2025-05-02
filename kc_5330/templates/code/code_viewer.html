@@ -8,8 +8,13 @@
 <div>
     <h3>{{ filenm }}</h3>
     <br>
-    Talk about the specific code
-    <br>
+    {% if filenm=="plotter.py" %}
+      This is a Jupyter notebook exported to a Python script.
+      It was utilized to plot the data resulting from executing the <em>table_annovar.pl</em> Perl command.
+      This script creates a bar graph displaying the number of rows that matched each outcome category.
+    {% elif filenm==""%}
+    {% endif %}
+    <br><br>
     <a href="{{ url_for('download.download', filenm=filenm, subdir=subdir) }}" class="btn btn-primary">(Download Code)</a>
     <br><br>
 </div>
