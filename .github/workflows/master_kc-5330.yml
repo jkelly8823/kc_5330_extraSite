@@ -84,4 +84,7 @@ jobs:
         with:
           app-name: 'kc-5330'
           slot-name: 'Production'
+
+      - name: Launch App
+        run: waitress-serve --call 'kc_5330:create_app'
           
