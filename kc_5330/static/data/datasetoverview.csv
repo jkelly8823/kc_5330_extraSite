@@ -1,4 +1,10 @@
 tool,ver,src,aim
 UCSC Genome Browser,hg38,www.genome.ucsc.edu,Visualize genomic context
+T2D Knowledge Portal,2025,t2d.hugeamp.org,Human genetic information related to T2D
+OMIM,2024,www.omim.org,Clinical variant and phenotype exploration
+dbSNP,Build 156,www.ncbi.nlm.nih.gov/snp/,Common short variant analysis
 GWAS Catalog,2024,www.ebi.ac.uk/gwas,GWAS validated disease-associated variant identification
-ENCODE cCRE,2021,screen.wenglab.org,Crosss-reference candidate cis-Regulatory Elements (cCREs) derived from ENCODE data
+GTEx Portal,v9,www.gtexportal.org,Tissue-specific expression analysis
+ANNOVAR,2018 Apr16 release,annovar.openbioinformatics.org,Variant functional location annotation
+ENCODE cCRE,2021,screen.wenglab.org,Regulatory element identification
+

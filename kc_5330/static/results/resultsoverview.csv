@@ -1,0 +1,12 @@
+filenm,title,caption
+figure1.png,UCSC Genome Browser View with Added Tracks,"(a) Region of interest highlighted in blue. (b) OMIM Genes and Alleles tracks (green bars) show potentially disease causing phenotypes and mutant alleles. (c) GWAS catalog track displays SNPs curated across literature. (d) dbSNP track displayed with all recorded short genetic variants. (e) Encode Candidate Cis-regulatory element (cCRE) track expanded. Classification of likely regulatory elements indicated as enhP (proximal enhancer), K4m3 (DNAse I accessible), prom (promoter), enhD (distal enhancer) and CTCF (transcriptional repressor)."
+figure2a.png,CDKN2A GTEx Tissue Expression,"CDKN2A demonstrates highest expression in the pituitary gland, and marginal expression in adipose tissues."
+figure2b.png,CDKN2B GTEx Tissue Expression,"CDKN2B has 5fold increased expression of both subcutaneous and visceral adipose tissue."
+figure3.png,Phenotypes Associated with CDKN2A/B,"T2D Knowledge Portal data-based figure demonstrating phenotypic associations with variants in the CDKN2A/B genes (chr9:21,917,752-22,059,305). The -log10(p-value) is on the y-axis, and phenotypes grouped by classification on the x-axis. T2D and coronary artery disease are remarkably significant."
+figure4.png,p-value by Genomic Coordinates,"The -log10(p-value) of variants across the region of interest, with nearby genes pictured below for direct reference."
+figure5.png,T2D Knowledge Portal Extracted Variant Genomic Location,"As corroborated in figure 6, all T2D variants are in non-coding regions of the CDKN2a-CDKN2b region. Visualization generated using Python3 and matplotlib/pyplot packages."
+figure6.png,ANNOVAR - Frequency of Variant Genomic Location in CDKN2A/B,"The count of variants grouped by location category via ANNOVAR pipeline implementation. The majority of variants are located in non-coding regions. Visualization created using python packages matplotlib/pyplot. See plotter.py in Code Overview tab."
+table1.csv,GWAS Catalog - Phenotypic Associations of Mutations,""
+table2.csv,GWAS Catalog - Exon Variants,""
+table3.csv,T2D Variant Alleles and Class,""
+table4.csv,GWAS Catalog & ENCODE cCRE - Regulatory Element Variants,""

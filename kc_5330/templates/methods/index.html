@@ -23,7 +23,8 @@
   Each method is presented with clear descriptions and, when applicable, links to the code used for
   implementation.
 </div>
-<br><hr>
+<h2>High Level Overview</h2>
+<hr>
 <div>
   <h3>Computational Methods (Data Wrangling)</h3>
   Variant analysis data was obtained via the command line <code>wget</code> for intergrated whole genome 
@@ -38,14 +39,160 @@
   </a>
    was executed.
 </div>
-<br><hr>
+<br>
 <div>
   <h3>Visualization Strategies</h3>
   This experiment used Python (pandas, matplotlib, pyplot) for statistical analysis and the visualization of variant distribution.
-  The script to create the plot can be found in <a href="{{ url_for('code.code_viewer', filenm='plotter.py') }}" class="button">
+  The script to create the plot can be found in 
+  <a href="{{ url_for('code.code_viewer', filenm='plotter.py') }}" class="button">
     plotter.py
   </a>
   <br><br>
   Regulatory tracks were manually integrated into the UCSC Genome Browser for visual overlap analysis.
 </div>
+<h2>Granular Description</h2>
+<hr>
+<div>
+  <h3>GTEx</h3>
+  The genes CDKN2A and CDKN2B were individually queried in GTEx to determine the overall expression profile 
+  of these genes in human tissue independent of one another (<a href="{{ url_for('results.result_viewer', filenm='figure2a.png') }}" class="button">Figure 2a</a> <a href="{{ url_for('results.result_viewer', filenm='figure2a.png') }}" class="button">Figure 2b</a>). 
+</div>
+<br>
+<div>
+  <h3>T2D Knowledge Portal</h3>
+  The T2D Knowledge Portal provides a gene-specific variant association with phenotypic data. This database was leveraged to determine the -log10(p-value) of phenotypes including but not limited to T2D, coronary artery disease and (<a href="{{ url_for('results.result_viewer', filenm='figure3.png') }}" class="button">Figure 3</a>).
+  <br><br>
+  <h4>T2D Knowledge Portal - Variant Sifter</h4>
+  The T2D Knowledge Portal module “Variant Sifter” offers variant annotations across a user-specified genomic region. 
+  The genomic region queried was as follows: chr9:21,917,752-22,059,305. 
+  This genomic region encompasses the precise genomic location 50kb upstream of CDKN2A and 50kb downstream of CDKN2B. 
+  This returned a total of 1,186 variants curated from credible databases and GWAS datasets. 
+  The genomic coordinates queried are in the hg19 build for compatibility with the Variant Sifter. 
+  The variants were pre-filtered to display only those with a p-value &le; 0.05. 
+  This data is displayed a function of genomic location vs p-value (<a href="{{ url_for('results.result_viewer', filenm='figure4.png') }}" class="button">Figure 4</a>).
+  These variants were exported as a csv for further analysis.
+  This csv was cross-referenced with the GWAS extracted variants to include only those implicated in T2D pathology. 
+  This data provided specific allelic information for each variant and confirmed that all of the T2D variants included in this project were SNPs (<a href="{{ url_for('results.result_viewer', filenm='table3.png') }}" class="button">Table 3</a>).
+  <br><br>
+  From the Variant Sifter csv file, the molecular “consequence” was extracted and plotted (see 
+  <a href="{{ url_for('code.code_viewer', filenm='plotter.py') }}" class="button">plotter.py</a>) in <a href="{{ url_for('results.result_viewer', filenm='figure5.png') }}" class="button">Figure 5</a>. 
+  The molecular consequence is described as the impact of each variant, predicted by the Ensembl Variant Effect Predictor. 
+  <br><br>
+  All variants are rigorously curated from credible sets and genome-wide association studies. 
+  The genomic coordinates are specifically in the hg19 build. 
+  I queried the region encompassing CDKN2A 50kB (chr9:21,917,752-22,059,305), and the phenotype "Type 2 Diabetes (T2D)"" which returned a total of 1,186 variants. 
+  All 1,186 variants were pre-filtered to ensure a p-value &le; 0.05, and subsequently exported as a csv for further analysis. 
+  The -log10(p-value) for each variant plotted against its genomic location can be visualized in <a href="{{ url_for('results.result_viewer', filenm='figure4.png') }}" class="button">Figure 4</a>.
+  <br><br>
+</div>
+<div>
+  <h3>ANNOVAR - Variant Annotation Pipeline</h3>
+  To annotate curated variants located within a 100 kb region flanking the CDKN2A and CDKN2B genes (50 kb upstream and downstream), I implemented a pipeline centered on ANNOVAR, a widely used tool for annotating genetic variants with functional information. 
+  The goal of this pipeline was to identify whether variants in this region were localized in coding or non-coding regions, thereby informing downstream analyses of regulatory disruption.
+  <ol>
+    <li>
+      Defining the Region of Interest
+      <ul>
+        <li>
+          The region spanning 50 kilobases (kb) upstream of CDKN2A and 50 kb downstream of CDKN2B was defined using genomic coordinates based on the reference genome.
+        </li>
+        <li>
+          Command line prompts were used to retrieve the vcf file from the 1000 Genome Project. 
+        </li>
+      </ul>
+    </li>
+    <li>
+      Variant Curation and Filtering
+      <ul>
+        <li>
+          The vcf file contained a high-quality list of curated variants from WGS data. 
+          This was filtered via command line prompts to retain only those falling within the defined flanking region.
+        </li>
+        <li>
+          Variants were formatted into the standard ANNOVAR input file (.avinput), which includes chromosome, start, end, reference allele, and alternate allele.
+        </li>
+      </ul>
+    </li>
+    <li>
+      Preparing ANNOVAR Environment
+      <ul>
+        <li>
+          ANNOVAR was installed and configured, with relevant databases downloaded using the annotate_variation.pl and convert2annovar.pl scripts.
+        </li>
+        <li>
+          The following ANNOVAR database was used:
+          <ul>
+            <li>
+              refGene (or refGeneWithVer) for gene-based annotation 
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>
+      Running ANNOVAR Annotation
+      <ul>
+        <li>
+          The table_annovar.pl script was used to annotate the input variants with the selected database.
+        </li>
+        <li>
+          See
+          <a href="{{ url_for('code.code_viewer', filenm='annovar_table.sh') }}" class="button">annovar_table.sh</a> 
+          for how the command was formatted.
+        </li>
+      </ul>
+    </li>
+    <li>
+      Post-Annotation Filtering and Summarization
+      <ul>
+        <li>
+          The output file was parsed to:
+          <ul>
+            <li>
+              Count total annotated variants (n=1,797).
+            </li>
+            <li>
+              Classify variants by their functional category (e.g., exonic, intronic, intergenic, UTR3).
+            </li>
+            <li>
+              Identify variants specifically within CDKN2A and CDKN2B genes.
+            </li>
+          </ul>
+        </li>
+        <li>
+          Only 14 of the 1,797 variants were located in coding exons of these genes. The majority were in non-coding regions.
+        </li>
+      </ul>
+    </li>
+    <li>
+      Classification of Variant Locations
+      <ul>
+        <li>
+          Using the functional annotations, variants were grouped into categories such as:
+          <ul>
+            <li>
+              Intronic ncRNA
+            </li>
+            <li>
+              Intergenic
+            </li>
+            <li>
+              Exonic ncRNA
+            </li>
+            <li>
+              UTR3
+            </li>
+            <li>
+              Exonic (coding)
+            </li>
+          </ul>
+        </li>
+        <li>
+          These categories were visualized (see <a href="{{ url_for('results.result_viewer', filenm='figure6.png') }}" class="button">Figure 6</a>) to illustrate the predominance of non-coding localization.
+        </li>
+      </ul>
+    </li>
+  </ol>
+</div>
+
 {% endblock %}

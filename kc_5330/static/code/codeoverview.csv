@@ -1,2 +1,3 @@
 filenm,purpose
 plotter.py,Plot the number of entries per category from an ANNOVAR table output
+annovar_table.sh,Shell script to execute the table_annovar perl script packaged in ANNOVAR

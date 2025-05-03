@@ -72,4 +72,4 @@ add note that only displayed cols of interest
 
 
 TO ASK:
-I put the shell commands in a file and just linked it from methods page. Did you also want it displayed there?
+Fix references in the methods that Kyra sent me. Link to tables/images/etc

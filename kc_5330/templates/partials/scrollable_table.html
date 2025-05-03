@@ -4,9 +4,7 @@
             <tr>
                 <th colspan="{{ cols|length + overview }}" style="text-align: center;">
                     {{ tablenm }}
-                    <a href="{{ url_for('download.download', filenm=tablenm, subdir=subdir) }}" class="btn btn-primary">(Download Dataset)
-
-                    </a>
+                    <a href="{{ url_for('download.download', filenm=tablenm, subdir=subdir) }}" class="btn btn-primary">(Download)</a>
                 </th>
             </tr>
             <tr>
@@ -39,8 +37,8 @@
                 {% if overview %}
                     <td>
                         {% if subdir=="data" %}
-                            {% if row[cols[1]] == "UCSC Genome Browser" %}
-                                View source for full hg38 dataset
+                            {% if row[cols[1]] in ["UCSC Genome Browser","T2D Knowledge Portal","OMIM", "dbSNP","GTEx Portal","ANNOVAR"] %}
+                                View source to access the dataset
                             {% else %}
                                 <a href="{{ url_for('datasets.dataset_viewer', id=row['id']) }}" class="button">
                                     View {{ row[cols[1]] }}
@@ -48,6 +46,10 @@
                             {% endif %}
                         {% elif subdir=="code" %}
                             <a href="{{ url_for('code.code_viewer', filenm=row[1]) }}" class="button">
+                                View {{ row[cols[1]] }}
+                            </a>
+                        {% elif subdir=="results" %}
+                            <a href="{{ url_for('results.result_viewer', filenm=row[1]) }}" class="button">
                                 View {{ row[cols[1]] }}
                             </a>
                         {% endif %}

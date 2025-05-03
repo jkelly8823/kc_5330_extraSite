@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Result Viewer{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+<div>
+    <br>
+    <h3>{{ tablenm }}</h3>
+    {% if ".csv" in tablenm %}
+      {% include 'partials/scrollable_table.html' %}
+    {% elif ".png" in tablenm %}
+      <a href="{{ url_for('download.download', filenm=tablenm, subdir=subdir) }}" class="btn btn-primary">(Download)</a>
+      <br><br>
+      <div class="image-container">
+        <img src="{{ url_for('static', filename='results/' + tablenm) }}">
+      </div>
+    {%  endif %}
+    {{ caption }}
+</div>
+{% endblock %}
